@@ -1,0 +1,12 @@
+.DS_Store
+._.DS_Store
+run/
+wandb/
+chkpts/
+__pycache__/
+*.pyc
+saved_models/
+data_presplit/
+data
+.vscode/
+.cache/

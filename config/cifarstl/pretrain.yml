@@ -1,0 +1,141 @@
+#########################################
+# basic parameters
+#########################################
+device:
+  value: cuda:0
+task_name:
+  # value: SL
+  # value: tNTL
+  # value: tCUTI
+  value: tCUPI
+  # value: tHNTL
+  # value: tSOPHON
+domain_src:
+  value: cifar
+domain_tgt:
+  value: stl
+patch_value:
+  value: default
+image_size:
+  value: 64
+num_classes:
+  value: 10
+
+seed:
+  value: 2023
+batch_size:
+  value: 32
+num_workers:
+  value: 16
+
+pre_split:
+  value: True
+data_transform:
+  value: ntl
+
+#########################################
+# parameters for training SL/NTL models
+#########################################
+teacher_network:
+  value: vgg13
+  # value: vgg13bn
+  # value: resnet34cmi
+  # value: wide_resnet50_2cmi
+  # value: vit_base
+  # value: vit_tiny
+teacher_pretrain:
+  value: True
+train_teacher_scratch:
+  value: True
+  # value: False
+save_train_teacher:
+  # value: True
+  value: False
+pretrained_teacher:
+  # value: saved_models/SL_sd.pth
+  value: auto
+pretrain_epochs:
+  value: 5 # 50
+pretrain_lr:
+  value: 0.001
+pretrain_momentum:
+  value: 0.9
+pretrain_weight_decay:
+  value: 0.0001
+#########################################
+# additional parameters for NTL
+#########################################
+NTL_alpha:
+  value: 0.1
+NTL_beta:
+  value: 0.1
+#########################################
+# additional parameters for CUTI-domain
+#########################################
+CUTI_alpha:
+  value: 0.1
+#########################################
+# additional parameters for HNTL
+#########################################
+HNTL_adapt_pooling:
+  value: True
+HNTL_rec_coef:
+  value: 0.1
+HNTL_lambda_vae:
+  value: 0.001
+HNTL_lambda_disent:
+  value: 0.08
+HNTL_student_pretrain:
+  value: True
+# stage 1
+HNTL_Disen_epochs:
+  value: 30
+HNTL_Disen_lr:
+  value: 0.001
+HNTL_Disen_momentum:
+  value: 0.9
+HNTL_Disen_weight_decay:
+  value: 0.0001
+# stage 2
+HNTL_KD_epochs:
+  value: 20
+HNTL_KD_lr:
+  # value: 0.01
+  # value: 0.0001
+  value: 0.001
+  # value: 0.1
+HNTL_KD_momentum:
+  value: 0.9
+HNTL_KD_weight_decay:
+  value: 0.0001
+#########################################
+# additional parameters for CUPT-domain
+#########################################
+CUPI_alpha:
+  value: 0.1
+CUPI_kl:
+  value: 0.1
+#########################################
+# additional parameters for SOPHON
+#########################################
+SOPHON_ways:
+  value: 10
+SOPHON_total_loop:
+  value: 1000
+SOPHON_ml_loop:
+  value: 1
+SOPHON_nl_loop:
+  value: 1
+SOPHON_fast_lr:
+  value: 0.0001
+SOPHON_lr:
+  value: 0.0001
+SOPHON_alpha:
+  value: 3.0
+SOPHON_beta:
+  value: 5.0
+SOPHON_adaptation_steps:
+  value: 50
+SOPHON_maml_loss_func:
+  # value: 'inverse_loss'
+  value: 'kl_loss'
