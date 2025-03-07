@@ -42,12 +42,20 @@ NTLBench is the first benchmark for non-transferable learning (NTL), which conta
   - [x] NTL
   - [x] CUTI-domain
   - [x] H-NTL
-  - [x] TransNTL
   - [x] SOPHON
   - [x] CUPI-domain
 - Source domain fine-tuning
+  - [x] Fine-tuning Strategies (initFC-all, initFC-FC, direct-FC, direct-all)
+  - [x] TransNTL
 - Target domain fine-tuning
+  - [x] Fine-tuning Strategies (initFC-all, initFC-FC, direct-FC, direct-all)
 - Source-free domain adaptation
+  - [] SHOT
+  - [] CoWA
+  - [] NRC
+  - [] PLUE
+  - [] AdaContrast
+  - [] DIFO
 
 <!-- Currently, NTLBench supports following methods:
 - [[Paper](https://arxiv.org/pdf/2106.06916)][[Code](https://github.com/conditionWang/NTL)] `NTL` (ICLR 2022) 
@@ -58,7 +66,60 @@ NTLBench is the first benchmark for non-transferable learning (NTL), which conta
 - [[Paper](https://arxiv.org/pdf/2408.13161)][[Code](https://github.com/LyWang12/CUPI-Domain)] `CUPI-domain` (T-PAMI 2024) -->
 
 
+### Quickstart
 
+#### Installation
+Clone the repository:
+```
+git clone https://github.com/tmllab/NTLBench.git
+cd NTLBench
+```
+Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+#### Preparing Data
+Download datasets:
+```
+mkdir ./data/
+python data_download.py --data_dir ./data/
+```
+Pre-split the dataset into training/validation/testing sets:
+```
+python data_split.py
+```
+This will create and split datasets to the `./data_presplit` folder.
+
+We currently support `Digits` (MNIST, USPS, SVHN, MNIST-M, SYND), `RMNIST`, `CIFAR/STL`, `VisDA` (VisDA-T, VisDA-V), `OfficeHome`, `DomainNet`, `VLCS`, `PACS`, and `Terra Incognita`.
+
+#### Training NTL
+
+You can pre-train SL or NTL models from scratch by running:
+```
+python NTL_pretrain.py
+```
+
+#### Attack NTL Models
+
+##### Source Domain Fine-Tuning
+Please run the `NTL_postattack_src.py` to evaluate the robustness of each NTL method. You can select the fine-tuning attack or the SOTA attack `TransNTL`.
+```
+python NTL_postattack_src.py
+```
+
+#### Target Domain Fine-Tuning
+Please run the `NTL_postattack_tgt.py` to evaluate the robustness of each NTL method against target domain fine-tuning. You can select the fine-tuning attack under the assumption that the attacker can access parts of labeled target domain data.
+```
+python NTL_postattack_tgt.py
+```
+
+#### Source-Free Domain Adaptation
+Please also run the `NTL_postattack_tgt.py` to evaluate the robustness of each NTL method against SFDA methods using **unlabeled** target domain. You can select the fine-tuning attack under the assumption that the attacker can access parts of unlabeled target domain data.
+```
+python NTL_postattack_tgt.py
+```
 
 
 ## Citation
