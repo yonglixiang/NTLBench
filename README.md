@@ -37,38 +37,28 @@ This figure shows the comparison of 5 methods (<font color="#7884AC">NTL</font>,
 NTLBench is the first benchmark for non-transferable learning (NTL), which contains a standard and uniﬁed training and evaluation process. NTLBench supports 5 SOTA NTL methods, 9 datasets (more than 116 domain pairs), 5 network architectures families, and 15 post-training attacks from 3 attack settings, providing more than 40,000 experimental conﬁgurations.
 
 ### Components
-
 - Pretraining
-  - [x] NTL
-  - [x] CUTI-domain
-  - [x] H-NTL
-  - [x] SOPHON
-  - [x] CUPI-domain
+  - [x] `NTL` (ICLR 2022) [[Paper](https://arxiv.org/pdf/2106.06916)][[Code](https://github.com/conditionWang/NTL)]
+  - [x] `CUTI-domain` (CVPR 2023) [[Paper](https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_Model_Barrier_A_Compact_Un-Transferable_Isolation_Domain_for_Model_Intellectual_CVPR_2023_paper.pdf)][[Code](https://github.com/LyWang12/CUTI-Domain)]
+  - [x] `H-NTL` (ICLR 2024) [[Paper](https://openreview.net/pdf?id=FYKVPOHCpE)][[Code](https://github.com/tmllab/NTLBench)]
+  - [x] `SOPHON` (IEEE S&P 2024) [[Paper](https://arxiv.org/pdf/2404.12699)][[Code](https://github.com/ChiangE/Sophon)]
+  - [x] `CUPI-domain` (T-PAMI 2024) [[Paper](https://arxiv.org/pdf/2408.13161)][[Code](https://github.com/LyWang12/CUPI-Domain)] 
 - Source domain fine-tuning
-  - [x] Fine-tuning Strategies (initFC-all, initFC-FC, direct-FC, direct-all)
-  - [x] TransNTL
+  - [x] Fine-tuning Strategies (`initFC-all`, `initFC-FC`, `direct-FC`, `direct-all`)
+  - [x] `TransNTL` (CVPR 2024) [[Paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Hong_Your_Transferability_Barrier_is_Fragile_Free-Lunch_for_Transferring_the_Non-Transferable_CVPR_2024_paper.pdf)][[Code](https://github.com/tmllab/2024_CVPR_TransNTL)]
 - Target domain fine-tuning
-  - [x] Fine-tuning Strategies (initFC-all, initFC-FC, direct-FC, direct-all)
+  - [x] Fine-tuning Strategies (`initFC-all`, `initFC-FC`, `direct-FC`, `direct-all`)
 - Source-free domain adaptation
-  - [] SHOT
-  - [] CoWA
-  - [] NRC
-  - [] PLUE
-  - [] AdaContrast
-  - [] DIFO
-
-<!-- Currently, NTLBench supports following methods:
-- [[Paper](https://arxiv.org/pdf/2106.06916)][[Code](https://github.com/conditionWang/NTL)] `NTL` (ICLR 2022) 
-- [[Paper](https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_Model_Barrier_A_Compact_Un-Transferable_Isolation_Domain_for_Model_Intellectual_CVPR_2023_paper.pdf)][[Code](https://github.com/LyWang12/CUTI-Domain)] `CUTI-domain` (CVPR 2023) 
-- [[Paper](https://openreview.net/pdf?id=FYKVPOHCpE)][[Code](https://github.com/tmllab/NTLBench)] `HNTL` (ICLR 2024) 
-- [[Paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Hong_Your_Transferability_Barrier_is_Fragile_Free-Lunch_for_Transferring_the_Non-Transferable_CVPR_2024_paper.pdf)][[Code](https://github.com/tmllab/2024_CVPR_TransNTL)] `TransNTL` (CVPR 2024) 
-- [[Paper](https://arxiv.org/pdf/2404.12699)][[Code](https://github.com/ChiangE/Sophon)] `SOPHON` (IEEE S&P 2024)
-- [[Paper](https://arxiv.org/pdf/2408.13161)][[Code](https://github.com/LyWang12/CUPI-Domain)] `CUPI-domain` (T-PAMI 2024) -->
-
+  - [ ] `SHOT`
+  - [ ] `CoWA`
+  - [ ] `NRC`
+  - [ ] `PLUE`
+  - [ ] `AdaContrast`
+  - [ ] `DIFO`
 
 ### Quickstart
 
-#### Installation
+#### 1. Installation
 Clone the repository:
 ```
 git clone https://github.com/tmllab/NTLBench.git
@@ -80,7 +70,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-#### Preparing Data
+#### 2. Preparing Data
 Download datasets:
 ```
 mkdir ./data/
@@ -94,28 +84,28 @@ This will create and split datasets to the `./data_presplit` folder.
 
 We currently support `Digits` (MNIST, USPS, SVHN, MNIST-M, SYND), `RMNIST`, `CIFAR/STL`, `VisDA` (VisDA-T, VisDA-V), `OfficeHome`, `DomainNet`, `VLCS`, `PACS`, and `Terra Incognita`.
 
-#### Training NTL
+#### 3. Training NTL
 
 You can pre-train SL or NTL models from scratch by running:
 ```
 python NTL_pretrain.py
 ```
 
-#### Attack NTL Models
+#### 4. Attack NTL Models
 
-##### Source Domain Fine-Tuning
+##### 4.1 Source Domain Fine-Tuning
 Please run the `NTL_postattack_src.py` to evaluate the robustness of each NTL method. You can select the fine-tuning attack or the SOTA attack `TransNTL`.
 ```
 python NTL_postattack_src.py
 ```
 
-#### Target Domain Fine-Tuning
+#### 4.2 Target Domain Fine-Tuning
 Please run the `NTL_postattack_tgt.py` to evaluate the robustness of each NTL method against target domain fine-tuning. You can select the fine-tuning attack under the assumption that the attacker can access parts of labeled target domain data.
 ```
 python NTL_postattack_tgt.py
 ```
 
-#### Source-Free Domain Adaptation
+#### 4.3 Source-Free Domain Adaptation
 Please also run the `NTL_postattack_tgt.py` to evaluate the robustness of each NTL method against SFDA methods using **unlabeled** target domain. You can select the fine-tuning attack under the assumption that the attacker can access parts of unlabeled target domain data.
 ```
 python NTL_postattack_tgt.py
