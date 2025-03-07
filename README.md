@@ -30,7 +30,7 @@ We bridge this gap by 👉 presenting the [first comprehensive survey](https://g
 - **UNTL** (EMNLP 2022): [Unsupervised Non-transferable Text Classification](https://arxiv.org/pdf/2210.12651)
 - **NTL** (ICLR 2022): [Non-Transferable Learning: A New Approach for Model Ownership Verification and Applicability Authorization](https://arxiv.org/pdf/2106.06916)
 
-👉 Summary of NTL methods according to **Field** (modal, task), **Data** (label space, target supervision, source data dependent), **Non-Transferable Approach** (feature or output space), and **Robustness** (whether source and target domain robustness have been evaluated). 📝 More details please refer to our paper [[arXiv](https://arxiv.org/abs/2502.13593)].
+👇 Summary of NTL methods according to **Field** (modal, task), **Data** (label space, target supervision, source data dependent), **Non-Transferable Approach** (feature or output space), and **Robustness** (whether source and target domain robustness have been evaluated). 📝 More details please refer to our paper [[arXiv](https://arxiv.org/abs/2502.13593)].
 
 ![](figs/review.png)
 
