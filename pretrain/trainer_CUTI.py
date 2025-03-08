@@ -91,7 +91,7 @@ def forward_CUTI(model, x, y=None, choice=0):
         return x, y
     
 
-def forward_CUTI_resnetcmi(model, x, y=None, choice=0):
+def forward_CUTI_resnet(model, x, y=None, choice=0):
     bs = x.shape[0]
     if y == None:
         return model(x)
@@ -191,12 +191,10 @@ def train_tCUTI(config, dataloaders, valloaders, testloaders, model, datasets_na
 
     if config.teacher_network in ['vgg11', 'vgg13', 'vgg19', 'vgg11bn', 'vgg13bn', 'vgg19bn']:
         forward_func = forward_CUTI
-    elif config.teacher_network in ['resnet18cmi', 'resnet18cmi_wobn', 'resnet34cmi_wobn', 'resnet34cmi', 'resnet50cmi', 'wide_resnet50_2cmi']:
-        forward_func = forward_CUTI_resnetcmi
+    elif config.teacher_network in ['resnet18', 'resnet34', 'resnet50', 'wide_resnet50_2']:
+        forward_func = forward_CUTI_resnet
     elif config.teacher_network in ['vit_tiny', 'vit_small', 'vit_base', 'vit_large']:
         forward_func = forward_CUTI_vit
-    # elif config.teacher_network in ['vgg11bncmi', 'vgg13bncmi']:
-    #     forward_func = forward_CUTI_vggcmi
     else:
         raise NotImplementedError
 

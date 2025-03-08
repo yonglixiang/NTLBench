@@ -531,8 +531,6 @@ def train_tCUPI(config, dataloaders, valloaders, testloaders, model, datasets_na
         forward_func = forward_CUPI_vit
     # elif config.teacher_network in ['resnet18cmi', 'resnet18cmi_wobn', 'resnet34cmi_wobn', 'resnet34cmi', 'resnet50cmi', 'wide_resnet50_2cmi']:
         # forward_func = forward_CUTI_resnetcmi
-    # elif config.teacher_network in ['vgg11bncmi', 'vgg13bncmi']:
-    #     forward_func = forward_CUTI_vggcmi
     else:
         raise NotImplementedError
 

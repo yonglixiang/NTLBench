@@ -37,10 +37,10 @@ data_transform:
 # parameters for training SL/NTL models
 #########################################
 teacher_network:
-  value: vgg13
+  # value: vgg13
   # value: vgg13bn
-  # value: resnet34cmi
-  # value: wide_resnet50_2cmi
+  value: resnet34
+  # value: wide_resnet50_2
   # value: vit_base
   # value: vit_tiny
 teacher_pretrain:

@@ -10,6 +10,7 @@ from termcolor import cprint
 import utils.evaluators
 import wandb
 from torch.optim import lr_scheduler
+from utils.utils import model_dict_cmi
 
 
 def train_tntl(config, dataloaders, valloaders, testloaders, model, datasets_name):
@@ -42,7 +43,7 @@ def train_tntl(config, dataloaders, valloaders, testloaders, model, datasets_nam
             img2 = zipped[1][0].to(device).float()
             label2 = zipped[1][1].to(device).float()
             
-            if 'cmi' in config.teacher_network:
+            if config.teacher_network in model_dict_cmi.keys():
                 # out1, fe1 = model(img1, return_features=True)
                 # out2, fe2 = model(img2, return_features=True)
                 if epoch == 0 and i == 0:

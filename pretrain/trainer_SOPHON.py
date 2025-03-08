@@ -13,6 +13,7 @@ from utils.load_utils import load_bn, save_bn
 import wandb
 from torch.optim import lr_scheduler
 import learn2learn as l2l
+import copy
 
 
 def accuracy(predictions, targets):
@@ -22,15 +23,7 @@ def accuracy(predictions, targets):
     return (predictions == targets).sum().float() / targets.size(0)
 
 def initialize(config, model):
-    if config.teacher_network == 'res50':
-        last_layer = model.module.fc
-    elif config.teacher_network == 'caformer': 
-        last_layer = model.module.head.fc.fc2
-    elif config.teacher_network == 'res18':
-        last_layer = model.module.fc
-    elif config.teacher_network == 'res34':
-        last_layer = model.module.fc
-    elif 'vgg' in config.teacher_network:
+    if 'vgg' in config.teacher_network:
         last_layer = model.classifier1[-1]
     elif 'vit' in config.teacher_network:
         last_layer = model.forward_head

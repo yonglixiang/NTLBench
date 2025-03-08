@@ -87,10 +87,6 @@ def train_HNTL_disentangle(config, dataloaders, valloaders, model_c, model_s, mo
             labels_s = torch.zeros_like(labels_c).to(config.device)
             labels_s[config.batch_size:] = 1
 
-            # imgs_src = imgs_src.to(device)
-            # imgs_tgt = imgs_tgt.to(device)
-            # labels_src = torch.argmax(labels_src, dim=1).to(device)
-            # labels_tgt = torch.argmax(labels_tgt, dim=1).to(device)
 
             outputs_c = model_c(imgs)
             outputs_s = model_s(imgs)
