@@ -11,7 +11,10 @@ We bridge this gap by 👉 presenting the [first comprehensive survey](https://g
 
 🧐 This figure shows the comparison of 5 methods (<font color="#7884AC">NTL</font>, <font color="#7884AC">CUTI-domain</font>, <font color="#7884AC">H-NTL</font>, <font color="#7884AC">SOPHON</font>, <font color="#7884AC">CUPI-domain</font>) on CIFAR \& STL with VGG-13, where we evaluate non-transferability performance and post-training robustness against 5 <font color="#E4785F">source domain fine-tuning (SourceFT)</font> attacks, 4 <font color="#8151BA">target domain fine-tuning (TargetFT)</font> attacks, and 6 <font color="#59A4B7">source-free domain adaptation (SFDA)</font> attacks (higher value means better performance/robustness). 
 
+## Latest News
 
+- Mar 9 2025: 👨🏻‍💻 We are working hard to prepare the NTLBench. Thank you for your patience!
+- Feb 19 2025: ✨ We have released our survey (preprint version) on arXiv.
 
 ## Survey
 
@@ -75,7 +78,7 @@ We currently support `Digits` (MNIST, USPS, SVHN, MNIST-M, SYND), `RMNIST`, `CIF
 
 Download datasets:
 ```
-mkdir ./data/
+mkdir ./data/ ./saved_models/
 python data_download.py --data_dir ./data/
 ```
 Pre-split the dataset into training/validation/testing sets:

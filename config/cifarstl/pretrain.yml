@@ -5,9 +5,9 @@ device:
   value: cuda:0
 task_name:
   # value: SL
-  # value: tNTL
+  value: tNTL
   # value: tCUTI
-  value: tCUPI
+  # value: tCUPI
   # value: tHNTL
   # value: tSOPHON
 domain_src:
@@ -49,13 +49,13 @@ train_teacher_scratch:
   value: True
   # value: False
 save_train_teacher:
-  # value: True
-  value: False
+  value: True
+  # value: False
 pretrained_teacher:
   # value: saved_models/SL_sd.pth
   value: auto
 pretrain_epochs:
-  value: 5 # 50
+  value: 20
 pretrain_lr:
   value: 0.001
 pretrain_momentum:
