@@ -84,7 +84,7 @@ python data_split.py
 ```
 This command will create and split datasets to the `./data_presplit` folder.
 
-We will also provide pre-split demo datasets in **Google Drive** (coming soon). You can download them and save to `./data_presplit/`.
+✨ We will provide pre-split demo datasets in **Google Drive** (coming soon). You can download them and save to `./data_presplit/`.
 
 
 #### 3. Training NTL
@@ -93,7 +93,7 @@ You can pre-train SL or NTL models from scratch by running:
 ```
 CUDA_VISIBLE_DEVICES=0 python NTL_pretrain.py
 ```
-We also provide model files in **Google Drive** (coming soon) which were pretrained on our demo pre-split datasets. You can save them to `./saved_models/`.
+✨ We also provide model files in **Google Drive** (coming soon) which were pretrained on our demo pre-split datasets. You can save them to `./saved_models/`.
 
 💡 We use [`wandb`](https://wandb.ai/site) to organize experiments and record resutls. Config files for training NTL are stored in `./config/<domain-pair>/pretrain.yml`.**Important Args** are illustrated as belows:
 - `task_name`: {`SL`/`tNTL`/`tCUTI`/`tHNTL`/`tCUPI`/`tSOPHON`} for supervised learning (SL) on the source domain, or pretraining by using different NTL methods on the source & target domains.
@@ -117,12 +117,20 @@ Please run the `NTL_postattack_src.py` to evaluate the robustness of each NTL me
 ```
 CUDA_VISIBLE_DEVICES=0 python NTL_postattack_src.py
 ```
+💡 Config files for Source Domain Fine-Tuning are stored in `./config/<domain-pair>/attack_src.yml`. **Important Args**:
+- `surrogate_network`: please keep the same as the `teacher_network`. (Invalid now)
+- `how_to_train_surrogate`: {`TransNTL`/`FT_Direct_ALL`/`FT_Direct_FC`/`FT_InitFC_ALL`/`FT_InitFC_FC`}.
+- `surrogate_data_percen`: use which percent of training samples for attack.
+- `surrogate_epochs`: attack epoch.
+- `surrogate_lr`: attack learning rate.
 
 ##### 4.2 Target Domain Fine-Tuning
 Please run the `NTL_postattack_tgt.py` to evaluate the robustness of each NTL method against target domain fine-tuning. You can select the fine-tuning attack under the assumption that the attacker can access parts of labeled target domain data.
 ```
 CUDA_VISIBLE_DEVICES=0 python NTL_postattack_tgt.py
 ```
+💡 Config files for Target Domain Fine-Tuning are stored in `./config/<domain-pair>/attack_tgt.yml`. **Important Args**:
+- `how_to_train_surrogate`: {`FT_Direct_ALL`/`FT_Direct_FC`/`FT_InitFC_ALL`/`FT_InitFC_FC`}.
 
 ##### 4.3 Source-Free Domain Adaptation
 Please also run the `NTL_postattack_tgt.py` to evaluate the robustness of each NTL method against SFDA methods using **unlabeled** target domain. You can select the fine-tuning attack under the assumption that the attacker can access parts of unlabeled target domain data.
