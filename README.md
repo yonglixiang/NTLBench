@@ -12,6 +12,7 @@ We bridge this gap by 👉 presenting the [first comprehensive survey](https://g
 🧐 We present the comparison of 5 methods (<font color="#7884AC">NTL</font>, <font color="#7884AC">CUTI-domain</font>, <font color="#7884AC">H-NTL</font>, <font color="#7884AC">SOPHON</font>, <font color="#7884AC">CUPI-domain</font>) on CIFAR \& STL with VGG-13, where we evaluate non-transferability performance and post-training robustness against 5 <font color="#E4785F">source domain fine-tuning (SourceFT)</font> attacks, 4 <font color="#8151BA">target domain fine-tuning (TargetFT)</font> attacks, and 6 <font color="#59A4B7">source-free domain adaptation (SFDA)</font> attacks (higher value means better performance/robustness). 
 
 **🔥 Latest News**
+- Apr 28 2025: Congratulations! Our paper has been accepted for presentation at IJCAI 2025 Survey Track.
 - Mar 9 2025: 👨🏻‍💻 We are working hard to prepare the NTLBench. Thank you for your patience!
 - Feb 19 2025: ✨ We have released our survey (preprint version) on [arXiv](https://arxiv.org/abs/2502.13593).
 
@@ -53,7 +54,7 @@ NTLBench is the first benchmark for **non-transferable learning** (NTL), which c
   - [x] `TransNTL` (CVPR 2024) [[Paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Hong_Your_Transferability_Barrier_is_Fragile_Free-Lunch_for_Transferring_the_Non-Transferable_CVPR_2024_paper.pdf)][[Code](https://github.com/tmllab/2024_CVPR_TransNTL)]
 - [x] **Target Domain Fine-Tuning**
   - [x] Fine-tuning Strategies (`initFC-all`, `initFC-FC`, `direct-FC`, `direct-all`)
-- [ ] **Source-Free Domain Adaptation** (coming soon 🤓)
+- [ ] **Source-Free Domain Adaptation**
   - [ ] `SHOT` (ICML 2020)
   - [ ] `CoWA` (ICML 2022)
   - [ ] `NRC` (NeurIPS 2021)
