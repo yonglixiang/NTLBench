@@ -1,0 +1,243 @@
+#########################################
+# basic parameters
+#########################################
+device:
+  value: cuda:0
+task_name:
+  value: SL
+  # value: tNTL
+  # value: tCUTI
+  # value: tCUPI
+  # value: tHNTL
+  # value: SOPHON
+domain_src:
+  value: cifar
+domain_tgt:
+  value: stl
+patch_value:
+  value: default
+image_size:
+  value: 64
+num_classes:
+  value: 10
+
+seed:
+  value: 2023
+batch_size:
+  value: 32
+num_workers:
+  value: 16
+
+pre_split:
+  value: True
+data_transform:
+  value: ntl
+data_dir:
+  value: ./data
+
+#########################################
+# parameters for training SL/NTL models
+#########################################
+teacher_network:
+  value: vgg13
+  # value: vit_base
+teacher_pretrain:
+  value: True
+  # value: False
+train_teacher_scratch:
+  # value: True
+  value: False
+save_train_teacher:
+  value: True
+  # value: False
+pretrained_teacher:
+  value: auto
+pretrain_epochs:
+  value: 30
+pretrain_lr:
+  value: 0.001
+pretrain_momentum:
+  value: 0.9
+pretrain_weight_decay:
+  value: 0.0001
+#########################################
+# additional parameters for NTL
+#########################################
+NTL_alpha:
+  value: 0.1
+NTL_beta:
+  value: 0.1
+#########################################
+# additional parameters for CUTI
+#########################################
+CUTI_alpha:
+  value: 0.1
+
+
+#########################################
+# parameters for training surrogate model
+#########################################
+# surrogate_network:
+  value: vgg13
+  # value: vit_base
+surrogate_pretrain:
+  value: True
+  # value: False
+train_surrogate_scratch:
+  value: True
+  # value: False
+how_to_train_surrogate:
+  # value: SFDA_SHOT
+  # value: SFDA_CoWA
+  # value: SFDA_NRC
+  # value: SFDA_PLUE
+  # value: SFDA_AdaContrast
+  value: SFDA_DIFO
+  # value: JailNTL
+save_train_surrogate:
+  # value: True
+  value: False
+pretrained_surrogate:
+  value: auto
+surrogate_data_percen:
+  value: 0.1
+surrogate_epochs:
+  value: 5
+surrogate_interval:
+  value: 15
+
+surrogate_lr:
+  value: 0.0001  # 0.0001 for DIFO, 0.001 for others
+surrogate_momentum:
+  value: 0.9
+surrogate_weight_decay:
+  value: 0.001
+
+# follow shot
+surrogate_NESTEROV:
+  value: TRUE
+surrogate_LR_DECAY1:
+  value: 0.1
+surrogate_LR_DECAY2:
+  value: 1
+
+# SHOT
+SHOT_CLS_PAR:
+  value: 0.3 
+SHOT_EPSILON:
+  value: 0.00001
+SHOT_DISTANCE:
+  value: cosine
+SHOT_THRESHOLD:
+  value: 0.0
+SHOT_ENT:
+  # value: True
+  value: False
+SHOT_GENT:
+  value: False
+SHOT_ENT_PAR:
+  value: 1.0
+
+# CoWA
+COWA_EPSILON:
+  value: 0.00001
+COWA_EPSILON2:
+  value: 0.000001
+COWA_DISTANCE:
+  value: cosine
+COWA_PICKLE:
+  # value: True
+  value: False
+COWA_OUTPUT_DIR:
+  value: ./CoWA_output
+COWA_COEFF:
+  value: JMDS
+  # value: PPL
+  # value: 'NO'
+COWA_ALPHA:
+  value: 0.2
+COWA_WARM:
+  value: 0.0
+
+# NRC
+NRC_K:
+  value: 5
+NRC_KK:
+  value: 4
+NRC_EPSILON:
+  value: 0.00001
+
+# PLUE
+PLUE_TEMPORAL_LENGTH:
+  value: 5
+PLUE_LABEL_REFINEMENT:
+  value: True
+PLUE_CTR:
+  value: True
+PLUE_EPSILON:
+  value: 0.00001
+PLUE_NEG_L:
+  value: True
+PLUE_REWEIGHTING:
+  value: True
+PLUE_QUEUE_SIZE:
+  value: 16384
+PLUE_NUM_NEIGHBORS:
+  value: 10
+
+# AdaContrast
+ADACONTRAST_CONTRAST_TYPE: 
+  value: "class_aware"
+ADACONTRAST_CE_TYPE: 
+  value: "standard" # ["standard", "symmetric", "smoothed", "soft"]
+ADACONTRAST_ALPHA: 
+  value: 1.0  # lambda for classification loss
+ADACONTRAST_BETA:   
+  value: 1.0  # lambda for instance loss
+ADACONTRAST_ETA:
+  value: 1.0 # lambda for diversity loss
+ADACONTRAST_OPTIM_COS:
+  value: True
+ADACONTRAST_OPTIM_EXP:
+  value: False
+ADACONTRAST_FULL_PROGRESS: 
+  value: 0
+ADACONTRAST_SCHEDULE:
+  value: [10,20]
+ADACONTRAST_GAMMA:
+  value: 0.2
+ADACONTRAST_DIST_TYPE:
+  value: "cosine" # ["cosine", "euclidean"]
+ADACONTRAST_CE_SUP_TYPE: 
+  value: "weak_strong" # ["weak_all", "weak_weak", "weak_strong", "self_all"]
+ADACONTRAST_REFINE_METHOD: 
+  value: "nearest_neighbors"
+ADACONTRAST_NUM_NEIGHBORS: 
+  value: 10
+
+# DIFO
+DIFO_ARCH:
+  value: 'ViT-B/16' #['RN50', 'ViT-B/32','RN101','ViT-B/16']
+DIFO_CLS_PAR:
+  value: 0.4
+DIFO_ENT:
+  value: True
+DIFO_GENT:
+  value: True
+DIFO_EPSILON:
+  value: 0.00001
+DIFO_GENT_PAR:
+  value: 1.0
+DIFO_CTX_INIT:
+  value: 'a_photo_of_a' #initialize context 
+DIFO_N_CTX:
+  value: 4
+DIFO_TTA_STEPS:
+  value: 1
+DIFO_IIC_PAR:
+  value: 1.0
+DIFO_LOAD:
+  value: None
+  # value: '.cache/clip/prompt_model.pt'
+DIFO_OPTIM:
+  value: 'adam'

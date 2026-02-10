@@ -1,0 +1,7 @@
+AlarmClock,Backpack,Batteries,Bed,Bike,Bottle,Bucket,Calculator,Calendar,Candles
+Chair,Clipboards,Computer,Couch,Curtains,DeskLamp,Drill,Eraser,ExitSign,Fan
+FileCabinet,Flipflops,Flowers,Folder,Fork,Glasses,Hammer,Helmet,Kettle,Keyboard
+Knives,LampShade,Laptop,Marker,Monitor,Mop,Mouse,Mug,Notebook,Oven,Pan
+PaperClip,Pen,Pencil,PostitNotes,Printer,PushPin,Radio,Refrigerator,ruler
+Scissors,Screwdriver,Shelf,Sink,Sneakers,Soda,Speaker,Spoon,Table,Telephone
+Toothbrush,Toys,TrashCan,TV,Webcam

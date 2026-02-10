@@ -25,15 +25,7 @@ if __name__ == '__main__':
     wandbsweep_config_update(config)
 
     # load data
-    if 'patch' in config.domain_src + config.domain_tgt:
-        # for ownership verification
-        load_data_func = load_data_tntl_patch
-    else:
-        # for pure datasets
-        load_data_func = load_data_tntl
-    (dataloader_train, dataloader_val, dataloader_test, 
-     datasets_name) = load_data_func(config)
-    
+    (dataloader_train, dataloader_val, dataloader_test, datasets_name) = load_data_tntl(config)
     
     # load model
     model_ntl = load_model(config)

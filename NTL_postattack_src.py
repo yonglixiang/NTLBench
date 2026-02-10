@@ -13,25 +13,18 @@ if __name__ == '__main__':
     # os.environ["WANDB_MODE"] = "disabled"
     
     # Load config file from local
-    # wandb.init(project='NTLBenchmark', config='config/cifarstl/attack_src.yml')
+    wandb.init(project='NTLBenchmark', config='config/cifarstl/attack_src.yml')
     # wandb.init(project='NTLBenchmark', config='config/visda/attack_src.yml')
     
     # Load config file from sweep
-    wandb.init()
+    # wandb.init()
     
     config = wandb.config
     setup_seed(config.seed)
     wandbsweep_config_update(config)
 
     # load data
-    if 'patch' in config.domain_src + config.domain_tgt:
-        # for ownership verification
-        load_data_func = load_data_tntl_patch
-    else:
-        # for pure datasets
-        load_data_func = load_data_tntl
-    (dataloader_train, dataloader_val, dataloader_test, 
-     datasets_name) = load_data_func(config)
+    (dataloader_train, dataloader_val, dataloader_test, datasets_name) = load_data_tntl(config)
     
     # load model
     model_ntl = load_model(config)
@@ -65,7 +58,7 @@ if __name__ == '__main__':
             cprint('Fine-Tuning by TransNTL on Ds', 'yellow')
             ft_func = attack.trainer_dshift.TransNTL
         # attack by FTAL
-        elif config.how_to_train_surrogate == 'FT_FTAL':
+        elif config.how_to_train_surrogate in ['FT_FTAL', 'FT_Direct_ALL']:
             cprint('Fine-Tuning by FTAL on Ds', 'yellow')
             ft_func = attack.trainer_ft.FTAL
         # attack by RTAL

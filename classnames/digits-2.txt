@@ -1,0 +1,1 @@
+digit0to5,digit5to10
