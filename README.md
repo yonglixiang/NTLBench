@@ -19,6 +19,9 @@ We bridge this gap by 👉 presenting the [first comprehensive survey](https://g
 ## Survey
 
 📌 We are actively tracking and updating the latest research about NTL. 
+- **NEs** (arXiv 2026): [Catch-Only-One: Non-Transferable Examples for Model-Specific Authorization](https://arxiv.org/pdf/2510.10982)
+- **MAP++** (IJCV 2026): [Dynamic MAsk-Pruning Strategy for Source-Free Model Intellectual Property Protection](https://link.springer.com/article/10.1007/s11263-025-02619-9)
+- **ATEsc** (ICML 2025): [When Data-Free Knowledge Distillation Meets Non-Transferable Teacher: Escaping Out-of-Distribution Trap is All You Need](https://arxiv.org/pdf/2507.04119)
 - **IP-CLIP** (CVPR 2025): [Vision-Language Model IP Protection via Prompt-based Learning](https://arxiv.org/pdf/2503.02393)
 - **JailNTL** (CVPR 2025): [Jailbreaking the Non-Transferable Barrier via Test-Time Data Disguising](https://github.com/tmllab/2025_CVPR_JailNTL)
 - **NTP** (ECCV 2024): [Non-transferable Pruning](https://arxiv.org/pdf/2410.08015)
@@ -54,13 +57,13 @@ NTLBench is the first benchmark for **non-transferable learning** (NTL), which c
   - [x] `TransNTL` (CVPR 2024) [[Paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Hong_Your_Transferability_Barrier_is_Fragile_Free-Lunch_for_Transferring_the_Non-Transferable_CVPR_2024_paper.pdf)][[Code](https://github.com/tmllab/2024_CVPR_TransNTL)]
 - [x] **Target Domain Fine-Tuning**
   - [x] Fine-tuning Strategies (`initFC-all`, `initFC-FC`, `direct-FC`, `direct-all`)
-- [ ] **Source-Free Domain Adaptation**
-  - [ ] `SHOT` (ICML 2020)
-  - [ ] `CoWA` (ICML 2022)
-  - [ ] `NRC` (NeurIPS 2021)
-  - [ ] `PLUE` (CVPR 2023)
-  - [ ] `AdaContrast` (CVPR 2022)
-  - [ ] `DIFO` (CVPR 2024)
+- [x] **Source-Free Domain Adaptation**
+  - [x] `SHOT` (ICML 2020) [[Paper](http://proceedings.mlr.press/v119/liang20a/liang20a.pdf)][[Code](https://github.com/tntek/source-free-domain-adaptation)]
+  - [x] `CoWA` (ICML 2022) [[Paper](https://proceedings.mlr.press/v162/lee22c/lee22c.pdf)][[Code](https://github.com/tntek/source-free-domain-adaptation)]
+  - [x] `NRC` (NeurIPS 2021) [[Paper](https://proceedings.neurips.cc/paper_files/paper/2021/file/f5deaeeae1538fb6c45901d524ee2f98-Paper.pdf)][[Code](https://github.com/tntek/source-free-domain-adaptation)]
+  - [x] `PLUE` (CVPR 2023) [[Paper](https://openaccess.thecvf.com/content/CVPR2023/papers/Litrico_Guiding_Pseudo-Labels_With_Uncertainty_Estimation_for_Source-Free_Unsupervised_Domain_Adaptation_CVPR_2023_paper.pdf)][[Code](https://github.com/tntek/source-free-domain-adaptation)]
+  - [x] `AdaContrast` (CVPR 2022) [[Paper](https://openaccess.thecvf.com/content/CVPR2022/papers/Chen_Contrastive_Test-Time_Adaptation_CVPR_2022_paper.pdf)][[Code](https://github.com/tntek/source-free-domain-adaptation)]
+  - [x] `DIFO` (CVPR 2024) [[Paper](https://arxiv.org/abs/2311.16510v3)][[Code](https://github.com/tntek/source-free-domain-adaptation)]
 
 ### Quickstart
 
@@ -140,7 +143,12 @@ Please also run the `NTL_postattack_tgt.py` to evaluate the robustness of each N
 ```
 CUDA_VISIBLE_DEVICES=0 python NTL_postattack_tgt.py
 ```
+**Important Args** (`config/*/attack_tgtun.yml` or `wandbsweep/attack/*tgtun*.yaml`):
 
+- `how_to_train_surrogate`: {`SFDA_CoWA`/`SFDA_DIFO`/`SFDA_NRC`/`SFDA_SHOT`/`SFDA_PLUE`/`SFDA_AdaContrast`}.
+- `surrogate_data_percen`: use which percent of training samples for attack.
+- `surrogate_epochs`: attack epoch.
+- `surrogate_lr`: attack learning rate.
 
 ## Citation
 If you find this work useful in your research, please consider citing our paper:
