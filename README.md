@@ -19,6 +19,8 @@ We bridge this gap by 👉 presenting the [first comprehensive survey](https://g
 ## Survey
 
 📌 We are actively tracking and updating the latest research about NTL. 
+- **PMP** (arXiv 2026): [Towards Building Non-Fine-Tunable Foundation Models](https://arxiv.org/pdf/2602.00446)
+- **AoD-IP** (CVPR 2026): [Authorize-on-Demand: Dynamic Authorization with Legality-Aware Intellectual Property Protection for VLMs](https://arxiv.org/abs/2603.04896)
 - **DDL** (TIFS 2026): [Your Non-Transferable Learning is Fragile: Practical Breach of Protected Models](https://ieeexplore.ieee.org/abstract/document/11426974)
 - **NEs** (arXiv 2026): [Catch-Only-One: Non-Transferable Examples for Model-Specific Authorization](https://arxiv.org/pdf/2510.10982)
 - **TCRL** (OpenReview 2026): [Transfer-Controllable Policy for Model Protection in Deep Reinforcement Learning](https://openreview.net/forum?id=IBKZTaJa0U)
